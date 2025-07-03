@@ -1,0 +1,52 @@
+---
+// About page for Wavebrook
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import AboutHero from '../components/AboutHero.astro';
+import AboutMission from '../components/AboutMission.astro';
+import PathOfGrowth from '../components/PathOfGrowth.astro';
+import CoreValues from '../components/CoreValues.astro';
+import TeamCarousel from '../components/TeamCarousel.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title='About - Wavebrook'
+  description="We are powering data-driven growth. Bridge the gap between data and monetization with Wavebrook's innovative solutions."
+>
+  <div class='bg-[#D6FBFE]'>
+    <Header />
+  </div>
+  <main>
+    <div class='bg-about'>
+      <AboutHero />
+      <AboutMission />
+    </div>
+    <PathOfGrowth />
+    <CoreValues />
+    <TeamCarousel />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    overflow-x: hidden;
+  }
+  .bg-about {
+    background-color: #d6fbfe;
+    background-image:
+      url('/assets/decoratives/aboutbg1.png'), url('/assets/decoratives/aboutbg2.png'),
+      url('/assets/decoratives/aboutbg3.png'), url('/assets/decoratives/aboutbg4.png');
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position:
+      left bottom,
+      85% 10%,
+      left bottom,
+      right bottom;
+    background-size:
+      clamp(760px, 40vw, 50vw) clamp(700px, 70vh, 80vh),
+      clamp(auto, 15vw, 200px) auto,
+      clamp(auto, 15vw, 200px) auto;
+  }
+</style>

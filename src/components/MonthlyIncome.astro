@@ -1,0 +1,223 @@
+---
+// Monthly Income Calculator component
+---
+
+<section class='px-[0.625rem] lg:px-6 py-12 lg:py-[4.375rem]'>
+  <div class='max-w-[90rem] mx-auto'>
+    <div
+      class='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-center lg:pl-[5rem] lg:pr-[5.25rem]'
+    >
+      <!-- Left side - Text content -->
+      <div class='flex flex-col gap-4 px-5 lg:px-0'>
+        <!-- Badge -->
+        <span class='badge-primary'> MONTHLY INCOME CALCULATOR </span>
+
+        <h2 class='page-title'>Estimate Your Earnings</h2>
+
+        <p class='page-body max-w-lg'>
+          Use the slider to choose the number of daily active users for your app. Based on your
+          selection, we'll provide an estimate of your potential monthly income.
+        </p>
+      </div>
+
+      <!-- Right side - Calculator -->
+      <div
+        class='bg-white rounded-xl p-8 lg:px-10 lg:pt-7 lg:pb-9 shadow-sm border border-gray-100'
+      >
+        <!-- Daily Active Users Section -->
+        <div class='mb-8'>
+          <label
+            class='block text-[#0A0A0A] font-semibold text-lg lg:text-xl tracking-[-0.01em] mb-6 lg:mb-[4.625rem]'
+          >
+            Number of daily active users *
+          </label>
+
+          <!-- Slider -->
+          <div class='relative'>
+            <!-- Tooltip -->
+            <div
+              id='sliderTooltip'
+              class='absolute -top-12 left-0 bg-[#024349] text-white px-3 py-2 rounded-lg text-sm font-semibold transform -translate-x-1/2 opacity-0 transition-opacity duration-200 pointer-events-none z-10'
+              style='left: 0%;'
+            >
+              <span id='tooltipValue'>0</span>
+              <div
+                class='absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#024349]'
+              >
+              </div>
+            </div>
+
+            <input
+              type='range'
+              id='userSlider'
+              min='0'
+              max='100000'
+              value='0'
+              step='1000'
+              class='w-full h-2 bg-white rounded-lg appearance-none cursor-pointer slider'
+            />
+            <div
+              class='flex justify-between text-base text-black/40 tracking-[-0.01em] font-semibold mt-4'
+            >
+              <span class='ml-2'>0</span>
+              <span>&gt;100,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monthly Income Result -->
+        <div class='bg-[#74F1A526] rounded-lg p-6 lg:px-7 lg:pt-10 lg:pb-8 mb-6'>
+          <div class='flex items-center justify-between'>
+            <span class='text-[#024349] font-semibold text-xl tracking-[-0.01em]'>
+              Level of monthly income **
+            </span>
+            <span
+              id='monthlyIncome'
+              class='text-lg lg:text-2xl font-bold text-[#024349] tracking-[-0.01em]'
+            >
+              $0
+            </span>
+          </div>
+        </div>
+
+        <!-- Disclaimers -->
+        <div
+          class='flex flex-col gap-4 lg:flex-row lg:gap-[2.125rem] text-xs font-normal tracking-[-0.02em] max-w-lg text-[#024349]'
+        >
+          <p>
+            * An average of daily active users with consent to share data accepted and location
+            permission activated.
+          </p>
+          <p>
+            ** This is an estimate taking into account that all partners are activated and are users
+            from Tier 1 countries.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slider {
+    background: linear-gradient(to right, #024349 0%, #024349 0%, #e5e7eb 0%, #e5e7eb 100%);
+  }
+
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #024349;
+    cursor: pointer;
+    border: none;
+    box-shadow:
+      0 0 0 10px #66ae9033,
+      0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .slider::-moz-range-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #024349;
+    cursor: pointer;
+    border: none;
+    box-shadow:
+      0 0 0 10px #66ae9033,
+      0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
+  const slider = document.getElementById('userSlider') as HTMLInputElement;
+  const monthlyIncomeElement = document.getElementById('monthlyIncome');
+  const tooltip = document.getElementById('sliderTooltip');
+  const tooltipValue = document.getElementById('tooltipValue');
+
+  if (slider && monthlyIncomeElement && tooltip && tooltipValue) {
+    // Function to calculate monthly income based on daily active users
+    function calculateMonthlyIncome(dailyUsers: number): number {
+      // Based on the requirement: 80,000 daily users = $30,000 monthly income
+      // This gives us a rate of $0.375 per user per month
+      return dailyUsers * 0.375;
+    }
+
+    // Function to format currency
+    function formatCurrency(amount: number): string {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(amount);
+    }
+
+    // Function to format number with commas
+    function formatNumber(num: number): string {
+      return new Intl.NumberFormat('en-US').format(num);
+    }
+
+    // Function to update the slider background
+    function updateSliderBackground(value: number, max: number) {
+      const percentage = (value / max) * 100;
+      slider.style.background = `linear-gradient(to right, #024349 0%, #024349 ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
+    }
+
+    // Function to update tooltip position
+    function updateTooltipPosition(value: number, max: number) {
+      if (tooltip && tooltipValue) {
+        // Calculate percentage but adjust for thumb width
+        const percentage = (value / max) * 100;
+
+        // Get slider width and thumb width
+        const sliderRect = slider.getBoundingClientRect();
+        const thumbWidth = 24; // thumb width from CSS
+        const sliderWidth = sliderRect.width;
+
+        // Calculate actual position accounting for thumb centering
+        // At 0%, thumb center is at thumbWidth/2 from left edge
+        // At 100%, thumb center is at sliderWidth - thumbWidth/2 from left edge
+        const actualPosition = thumbWidth / 2 + (percentage / 100) * (sliderWidth - thumbWidth);
+        const adjustedPercentage = (actualPosition / sliderWidth) * 100;
+
+        tooltip.style.left = `${adjustedPercentage}%`;
+        tooltipValue.textContent = formatNumber(value);
+      }
+    }
+
+    // Update monthly income when slider changes
+    function updateMonthlyIncome() {
+      const dailyUsers = parseInt(slider.value);
+      const monthlyIncome = calculateMonthlyIncome(dailyUsers);
+
+      if (monthlyIncomeElement) {
+        monthlyIncomeElement.textContent = formatCurrency(monthlyIncome);
+      }
+      updateSliderBackground(dailyUsers, 100000);
+      updateTooltipPosition(dailyUsers, 100000);
+    }
+
+    // Show tooltip on mouse down
+    slider.addEventListener('mousedown', () => {
+      if (tooltip) {
+        tooltip.classList.remove('opacity-0');
+        tooltip.classList.add('opacity-100');
+      }
+    });
+
+    // Hide tooltip on mouse up
+    slider.addEventListener('mouseup', () => {
+      if (tooltip) {
+        tooltip.classList.remove('opacity-100');
+        tooltip.classList.add('opacity-0');
+      }
+    });
+
+    // Update values on input
+    slider.addEventListener('input', updateMonthlyIncome);
+
+    // Initialize with default values
+    updateMonthlyIncome();
+  }
+</script>

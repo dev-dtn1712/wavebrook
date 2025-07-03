@@ -1,0 +1,38 @@
+---
+import Arrow from './icons/Arrow.astro';
+
+interface Props {
+  text: string;
+  href?: string;
+  withArrow?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'primary' | 'secondary';
+  class?: string;
+}
+
+const {
+  text,
+  href,
+  withArrow = true,
+  variant = 'primary',
+  class: additionalClasses = '',
+} = Astro.props;
+
+// Variant styles
+const variantClasses = {
+  primary: 'bg-[#024349] text-white hover:bg-[#059669]',
+  secondary: 'bg-white text-[#024349] border border-[#024349] hover:bg-[#024349] hover:text-white',
+};
+
+const baseClasses =
+  'inline-flex items-center p-4 font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg group leading-none text-sm font-bold cursor-pointer';
+
+const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${additionalClasses}`;
+
+const Element = href ? 'a' : 'button';
+---
+
+<Element class={buttonClasses} href={href}>
+  {text}
+  {withArrow && <Arrow className='ml-3 mr-1 group-hover:translate-x-1 transition-transform' />}
+</Element>

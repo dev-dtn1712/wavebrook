@@ -1,0 +1,53 @@
+---
+// Become a Partner page for Wavebrook
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import PartnerHero from '../components/PartnerHero.astro';
+import PartnerTypes from '../components/PartnerTypes.astro';
+import PartnerBenefits from '../components/PartnerBenefits.astro';
+import PartnerFAQ from '../components/PartnerFAQ.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title='Become a Partner - Wavebrook'
+  description='Unlock new opportunities with Wavebrook. Partner with us to drive smarter business decisions and leverage high-quality anonymized data.'
+>
+  <Header />
+  <main>
+    <PartnerHero />
+    <PartnerTypes />
+    <PartnerBenefits />
+    <PartnerFAQ />
+    <Contact
+      subtitle='Ready to Partner?'
+      title="Contact our sales<br><span class='block'>team</span>"
+      body='Contact us today to explore how Wavebrook can empower your business with actionable data insights.'
+      ctaText='Explore our affiliate program'
+      cta='Earning with Wavebrook'
+      ctaLink='/affiliates'
+      formCta='Request more info'
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Additional page-specific styles if needed */
+  main {
+    overflow-x: hidden;
+    background-image:
+      url('/assets/decoratives/mainbg1.png'), url('/assets/decoratives/mainbg2.png'),
+      url('/assets/decoratives/mainbg3.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position:
+      right 15%,
+      85% 5%,
+      left 40%;
+    background-size:
+      clamp(760px, 40vw, 50vw) clamp(700px, 70vh, 80vh),
+      clamp(auto, 15vw, 200px) auto,
+      clamp(auto, 15vw, 200px) auto;
+  }
+</style>

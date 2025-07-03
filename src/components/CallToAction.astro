@@ -1,0 +1,38 @@
+---
+// Call to Action component for Wavebrook
+import CTAButton from './CTAButton.astro';
+---
+
+<section class='px-[0.625rem] lg:px-6 relative overflow-hidden py-6'>
+  <div class='max-w-[90rem] mx-auto relative pt-16 lg:py-[7.5rem] bg-[#BEFFD7] rounded-xl'>
+    <div class='grid lg:grid-cols-2 gap-12 items-center'>
+      <div class='hidden lg:block'></div>
+      <div class='text-left lg:max-w-[31rem] relative z-10 px-5 lg:px-0'>
+        <h3
+          class='text-4xl lg:text-[2.5rem] font-semibold text-[#0A0A0A] mb-4 leading-tight tracking-[-0.01em]'
+        >
+          Easy Integration, Real Revenue
+        </h3>
+
+        <p
+          class='text-base text-[#0A0A0A] mb-8 leading-normal tracking-[-0.02em] font-normal lg:max-w-[28rem]'
+        >
+          Add our SDK to your app in minutes and start earning from real-world data. No impact on
+          user experience, full control, and monthly payouts.
+        </p>
+
+        <CTAButton text='Get Started Now' withArrow={true} />
+      </div>
+      <img
+        src='/assets/decoratives/CTAFrame.png'
+        alt='Wavebrook CTA'
+        class='block mx-auto lg:hidden pb-7'
+      />
+    </div>
+    <img
+      src='/assets/decoratives/CTABackground.png'
+      alt='Wavebrook CTA'
+      class='hidden lg:block w-full h-full object-cover absolute top-0 left-0 pointer-events-none'
+    />
+  </div>
+</section>

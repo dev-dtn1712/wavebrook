@@ -1,0 +1,106 @@
+---
+// Events Grid section
+const events = [
+  {
+    id: 1,
+    date: 'February 24-27, 2025',
+    title: 'Mobile World Congress',
+    description: 'Join us at Booth #B123 to explore how Wavebrook SDK advances app monetization with real-time data insights.',
+    location: 'Barcelona, Spain',
+    bgImg: '/assets/thumbnails/eventcard1.png',
+  },
+  {
+    id: 2,
+    date: 'March 10-12, 2025',
+    title: 'Android Dev Summit',
+    description: 'Attend our workshop to learn how to optimize app performance and increase revenue using data-driven strategies.',
+    location: 'San Francisco, USA',
+    bgImg: '/assets/thumbnails/eventcard2.png',
+  },
+  {
+    id: 3,
+    date: 'April 5-6, 2025',
+    title: 'Data Monetization Forum',
+    description: 'Connect with our team to discover how Wavebrook SDK helps turn data into revenue for network operators and research firms.',
+    location: 'Dubai, UAE',
+    bgImg: '/assets/thumbnails/eventcard3.png',
+  },
+  {
+    id: 4,
+    date: 'April 5-6, 2025',
+    title: 'Global Business Expo',
+    description: 'Connect with our team to discover how Wavebrook SDK helps turn data into revenue for network operators and research firms.',
+    location: 'Dubai, UAE',
+    bgImg: '/assets/thumbnails/eventcard4.png',
+  },
+  {
+    id: 5,
+    date: 'April 5-6, 2025',
+    title: 'The Business of Events',
+    description: 'Connect with our team to discover how Wavebrook SDK helps turn data into revenue for network operators and research firms.',
+    location: 'Dubai, UAE',
+    bgImg: '/assets/thumbnails/eventcard5.png',
+  },
+  {
+    id: 6,
+    date: 'April 5-6, 2025',
+    title: 'Web Summit',
+    description: 'Connect with our team to discover how Wavebrook SDK helps turn data into revenue for network operators and research firms.',
+    location: 'Dubai, UAE',
+    bgImg: '/assets/thumbnails/eventcard6.png',
+  },
+];
+---
+
+<section>
+  <div class="max-w-[90rem] mx-auto px-6 pb-20">
+    
+    <!-- Events Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      {events.map(event => (
+<div class="group cursor-pointer h-full">
+  <div class="event-card rounded-2xl overflow-hidden shadow-lg border border-white transition-all duration-500 p-2 bg-white h-full">
+    <div
+      class="relative h-48 flex items-center justify-center overflow-hidden rounded-2xl mb-6"
+      style={`background-image: url('${event.bgImg}');background-size: cover; background-position: center; background-repeat: no-repeat;`}
+    >
+    </div>
+
+    <!-- Event Details -->
+    <div class="px-3 mb-4">
+      <p class="text-[#024349] font-semibold text-xs sm:text-sm mb-1 sm:mb-2">{event.date}</p>
+
+      <h4 class="font-semibold text-lg sm:text-xl md:text-2xl leading-[130%] tracking-[-0.01em] text-black mb-2 sm:mb-3">
+        {event.title}
+      </h4>
+
+      <p class="text-[#000000CC] font-normal text-sm sm:text-base leading-[150%] tracking-[-0.02em] mb-3 sm:mb-4">
+        {event.description}
+      </p>
+
+      <!-- Location -->
+      <div class="flex items-center gap-2 font-bold text-sm leading-[14px] tracking-normal uppercase text-[#024349]">
+        <img src="/assets/icons/location.svg" alt="location icon">
+        {event.location}
+      </div>
+    </div>
+  </div>
+</div>
+      ))}
+      
+    </div>
+
+  </div>
+</section> 
+
+<style>
+  .event-card {
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008;
+  }
+  
+  .event-card:hover {
+    border: 1px solid #BEFFD7;
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008, 4px 4px 0px 0px #024349;
+  }
+</style>

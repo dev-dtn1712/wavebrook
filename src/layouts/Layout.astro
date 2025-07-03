@@ -1,0 +1,65 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Wavebrook - Empowering global connectivity through app innovation',
+  description = 'We help app developers grow while enabling partners worldwide to enhance mobile networks through real-world insights.',
+} = Astro.props;
+
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <meta name='description' content={description} />
+    <title>{title}</title>
+
+    <!-- Fixel Display Font -->
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap'
+      rel='stylesheet'
+    />
+  </head>
+  <body class='font-sans antialiased'>
+    <div id='main-container'>
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --primary: #024349;
+    --background: #edfdf3;
+    --accent: #10b981;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+  }
+
+  #main-container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+</style>

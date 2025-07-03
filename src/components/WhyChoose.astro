@@ -1,0 +1,119 @@
+---
+// Why Choose section component
+import SafeAndPrivacy from './icons/WhyChoose/SafeAndPrivacy.astro';
+import HighCPM from './icons/WhyChoose/HighCPM.astro';
+import IntegratedPayment from './icons/WhyChoose/IntegratedPayment.astro';
+import SingleSDK from './icons/WhyChoose/SingleSDK.astro';
+import PremiumSupport from './icons/WhyChoose/PremiumSupport.astro';
+import PremiumPartners from './icons/WhyChoose/PremiumPartners.astro';
+---
+
+<section class='px-[0.625rem] md:px-6 py-6'>
+  <div class='max-w-[90rem] mx-auto px-4 md:px-7 md:py-[5.5rem] pt-8 bg-white rounded-xl'>
+    <!-- Header -->
+    <div class='text-left mb-16'>
+      <!-- Badge -->
+      <div class='inline-block mb-6'>
+        <span class='badge-primary'> OUR ADVANTAGES </span>
+      </div>
+
+      <!-- Title -->
+      <h2 class='page-title mb-6'>Why to choose NetSignal SDK</h2>
+
+      <!-- Description -->
+      <p class='page-body max-w-lg'>
+        Use our SDK to turn your app traffic into monthly revenue, while helping improve mobile
+        network quality worldwide.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class='grid grid-cols-1 md:grid-cols-3 grid-rows-3 gap-6 auto-rows-fr'>
+      <!-- Feature 1: Safe and privacy compliant (2 rows x 1 column) -->
+      <div class='bg-[#E8F8ED] rounded-xl p-8 relative overflow-hidden flex flex-col md:row-span-2'>
+        <h3 class='font-semibold text-xl text-[#0A0A0A] mb-3'>Safe and privacy compliant</h3>
+        <p class='text-[#0A0A0A] text-sm md:text-base font-normal leading-relaxed'>
+          We follow strict privacy standards, including GDPR and Google Play policies, to ensure
+          full compliance and user safety.
+        </p>
+
+        <!-- Safe and Privacy Component -->
+        <div class='mt-auto'>
+          <SafeAndPrivacy />
+        </div>
+      </div>
+
+      <!-- Feature 2: High CPM (1 row x 1 column) -->
+      <div class='bg-[#E8F8ED] rounded-xl p-8 relative overflow-hidden flex flex-col'>
+        <h3 class='font-semibold text-xl text-[#0A0A0A] mb-3'>High CPM</h3>
+        <p class='text-[#0A0A0A] text-sm md:text-base font-normal leading-relaxed'>
+          Earn more with our SDK. We focus on signal quality and location — high-demand data for
+          mobile operators.
+        </p>
+
+        <!-- High CPM Component -->
+        <div class='mt-auto'>
+          <HighCPM />
+        </div>
+      </div>
+
+      <!-- Feature 3: One integrated monthly payment (2 rows x 1 column) -->
+      <div class='bg-[#E8F8ED] rounded-xl p-8 relative overflow-hidden flex flex-col md:row-span-2'>
+        <h3 class='font-semibold text-xl text-[#0A0A0A] mb-3'>One integrated monthly payment</h3>
+        <p class='text-[#0A0A0A] text-sm md:text-base font-normal leading-relaxed'>
+          Receive one single monthly payment, covering all active partners. Simplified billing, no
+          hidden fees.
+        </p>
+
+        <!-- Integrated Payment Component -->
+        <div class='mt-auto'>
+          <IntegratedPayment />
+        </div>
+      </div>
+
+      <!-- Feature 4: Single SDK integration (1 row x 1 column) -->
+      <div class='bg-[#E8F8ED] rounded-xl p-8 relative overflow-hidden flex flex-col'>
+        <h3 class='font-semibold text-xl text-[#0A0A0A] mb-3'>Single SDK integration</h3>
+        <p class='text-[#0A0A0A] text-sm md:text-base font-normal leading-relaxed'>
+          No need to integrate multiple SDKs. One single integration unlocks access to multiple
+          partners and geos.
+        </p>
+
+        <!-- Single SDK Component -->
+        <div class='mt-2 lg:mt-auto flex items-center justify-center'>
+          <SingleSDK />
+        </div>
+      </div>
+
+      <!-- Feature 5: Premium technical support (1 row x 1 column) -->
+      <div class='bg-[#E8F8ED] rounded-xl p-8 relative overflow-hidden flex flex-col'>
+        <h3 class='font-semibold text-xl text-[#0A0A0A] mb-3'>Premium technical support</h3>
+        <p class='text-[#0A0A0A] text-sm md:text-base font-normal leading-relaxed'>
+          Our tech team is here to help with any issues. We ensure your SDK runs smoothly and stays
+          updated.
+        </p>
+
+        <!-- Premium Support Component -->
+        <div class='mt-2 lg:mt-auto flex items-center justify-center'>
+          <PremiumSupport />
+        </div>
+      </div>
+
+      <!-- Feature 6: Connect with premium partners (1 row x 2 columns) -->
+      <div class='bg-[#E8F8ED] rounded-xl p-8 relative overflow-hidden flex md:col-span-2'>
+        <div class='flex flex-col'>
+          <h3 class='font-semibold text-xl text-[#0A0A0A] mb-3'>Connect with premium partners</h3>
+          <p class='text-[#0A0A0A] text-sm md:text-base font-normal leading-relaxed'>
+            Get instant access to trusted global partners — no need for separate negotiations or
+            long approval processes.
+          </p>
+        </div>
+
+        <!-- Premium Partners Component -->
+        <div class='mt-auto'>
+          <PremiumPartners />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

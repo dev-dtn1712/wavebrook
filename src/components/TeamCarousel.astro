@@ -1,0 +1,302 @@
+---
+// Team Carousel section
+const teamMembers = [
+  {
+    id: 1,
+    name: 'Eduardo Olmeda',
+    position: 'CEO, Wavebrook',
+    image: '/api/placeholder/300/300', // Placeholder for real image
+    hasImage: true,
+  },
+  {
+    id: 2,
+    name: 'Eduardo Olmeda',
+    position: 'CEO, Wavebrook',
+    image: '/api/placeholder/300/300',
+    hasImage: false,
+  },
+  {
+    id: 3,
+    name: 'Eduardo Olmeda', 
+    position: 'CEO, Wavebrook',
+    image: '/api/placeholder/300/300',
+    hasImage: false,
+  },
+  {
+    id: 4,
+    name: 'Eduardo Olmeda',
+    position: 'CEO, Wavebrook', 
+    image: '/api/placeholder/300/300',
+    hasImage: false,
+  },
+  {
+    id: 5,
+    name: 'Eduardo Olmeda',
+    position: 'CEO, Wavebrook',
+    image: '/api/placeholder/300/300',
+    hasImage: false,
+  },
+  {
+    id: 6,
+    name: 'Eduardo Olmeda',
+    position: 'CEO, Wavebrook',
+    image: '/api/placeholder/300/300',
+    hasImage: false,
+  },
+];
+
+// Duplicate for infinite scroll
+const infiniteTeamMembers = [...teamMembers, ...teamMembers, ...teamMembers];
+---
+
+<section class="pt-14 md:pt-24 pb-16 md:pb-36 bg-[#024349] rounded-2xl m-6 relative overflow-hidden">
+  <div class="max-w-[90rem] mx-auto pl-6 md:pl-12 pr-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6 md:mb-16 max-md:flex-col max-md:gap-6">
+      <div>
+        <p class="text-[#BEFFD7] font-semibold text-sm tracking-wide mb-4">TEAM</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">
+          Meet our
+          <span class="block">leadership team</span>
+        </h2>
+      </div>
+      
+      <!-- Navigation Arrows -->
+      <div class="flex space-x-4 max-md:self-end">
+        <button 
+          id="prevBtn"
+          class="w-14 h-14 rounded-full border border-[#BEFFD7] opacity-50 hover:opacity-100 flex items-center justify-center transition-all group"
+        >
+          <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotate-180">
+          <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="#BEFFD7" stroke-width="1.8" stroke-linecap="square"/>
+          </svg>
+        </button>
+        <button 
+          id="nextBtn"
+          class="w-14 h-14 rounded-full border border-[#BEFFD7] opacity-50 hover:opacity-100 flex items-center justify-center transition-all group"
+        >
+          <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="#BEFFD7" stroke-width="1.8" stroke-linecap="square"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+    <!-- Carousel Container -->
+    <div class="relative ml-4 md:ml-10 w-full">
+    <div class="mx-auto max-w-[90rem] overflow-hidden">
+      <div id="teamCarousel" class="flex transition-transform duration-500 ease-in-out cursor-grab active:cursor-grabbing select-none">
+        {infiniteTeamMembers.map((member) => (
+          <div class="flex-none w-64 md:w-72 mr-[22px]">
+            <!-- Team Member Card -->
+            <div class="text-left h-full pointer-events-none">
+              <!-- Member Photo -->
+              <div class="mb-4 min-h-80 flex justify-center member-card rounded-2xl">
+                {member.hasImage ? (
+                  <div class="rounded-2xl overflow-hidden bg-grad flex items-end justify-center">
+                    <!-- Real photo would go here -->
+                    <img src="/assets/decoratives/pfps/teammember1.png" alt="teammember1" class="object-cover scale-125">
+                  </div>
+                ) : (
+                  <div class="rounded-2xl overflow-hidden bg-[#EDFDF3] flex items-center justify-center w-full">
+                    <img src="/assets/icons/user-bold.png" alt="icon user" class="object-cover">
+                  </div>
+                )}
+              </div>
+              
+              <!-- Member Info -->
+              <h3 class="text-lg font-semibold text-white mb-2">{member.name}</h3>
+              <p class="text-[#EDFDF3] text-sm">{member.position}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    </div>
+</section>
+
+<style>
+  h2 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: -1%;
+  }
+
+  .member-card {
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008;
+  }
+  
+  .member-card:hover {
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008, 4px 4px 0px 0px #fff;
+  }
+
+  .bg-grad {
+    background: linear-gradient(91.29deg, #BEFFD7 6.51%, #8ED5DB 86.05%);
+  }
+</style>
+
+<script>
+  // Infinite Draggable Team Carousel functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('teamCarousel') as HTMLElement;
+    const prevBtn = document.getElementById('prevBtn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
+    const screenWidth = window.innerWidth;
+    
+    if (!carousel || !prevBtn || !nextBtn) return;
+    
+    const cardWidth = screenWidth < 350 ? 256 + 20 : 288 + 20;
+    const originalItemCount = 6; // Number of original team members
+    const totalCards = carousel.children.length; // Should be 18 (6 * 3)
+    
+    let currentPosition = originalItemCount * cardWidth; // Start at the middle set
+    let isTransitioning = false;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartPosition = 0;
+    
+    function updateCarousel(withTransition = true) {
+      if (withTransition && !isDragging) {
+        carousel.style.transition = 'transform 0.5s ease-in-out';
+      } else {
+        carousel.style.transition = 'none';
+      }
+      carousel.style.transform = `translateX(-${currentPosition}px)`;
+    }
+    
+    function handleInfiniteLoop() {
+      // If we're at the end of the middle set, jump to the beginning of the middle set
+      if (currentPosition >= (originalItemCount * 2) * cardWidth) {
+        setTimeout(() => {
+          currentPosition = originalItemCount * cardWidth;
+          updateCarousel(false);
+        }, 500);
+      }
+      // If we're at the beginning of the middle set, jump to the end of the middle set
+      else if (currentPosition <= 0) {
+        setTimeout(() => {
+          currentPosition = (originalItemCount - 1) * cardWidth;
+          updateCarousel(false);
+        }, 500);
+      }
+    }
+    
+    function snapToNearestCard() {
+      const cardIndex = Math.round(currentPosition / cardWidth);
+      currentPosition = cardIndex * cardWidth;
+      updateCarousel(true);
+    }
+    
+    // Mouse/Touch event handlers
+    function getEventX(event: MouseEvent | TouchEvent): number {
+      return 'touches' in event ? event.touches[0].clientX : event.clientX;
+    }
+    
+    function handleDragStart(event: MouseEvent | TouchEvent) {
+      isDragging = true;
+      dragStartX = getEventX(event);
+      dragStartPosition = currentPosition;
+      carousel.style.cursor = 'grabbing';
+      event.preventDefault();
+    }
+    
+    function handleDragMove(event: MouseEvent | TouchEvent) {
+      if (!isDragging) return;
+      
+      const currentX = getEventX(event);
+      const deltaX = dragStartX - currentX;
+      currentPosition = dragStartPosition + deltaX;
+      
+      updateCarousel(false);
+      event.preventDefault();
+    }
+    
+    function handleDragEnd(event: MouseEvent | TouchEvent) {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      carousel.style.cursor = 'grab';
+      
+      const currentX = getEventX(event);
+      const deltaX = dragStartX - currentX;
+      const threshold = cardWidth * 0.3; // 30% of card width to trigger snap
+      
+      if (Math.abs(deltaX) > threshold) {
+        // Snap to next/previous card
+        if (deltaX > 0) {
+          // Dragged left, go to next
+          currentPosition = dragStartPosition + cardWidth;
+        } else {
+          // Dragged right, go to previous
+          currentPosition = dragStartPosition - cardWidth;
+        }
+      } else {
+        // Snap back to original position
+        currentPosition = dragStartPosition;
+      }
+      
+      snapToNearestCard();
+      
+      setTimeout(() => {
+        handleInfiniteLoop();
+      }, 500);
+      
+      event.preventDefault();
+    }
+    
+    // Mouse events
+    carousel.addEventListener('mousedown', handleDragStart);
+    document.addEventListener('mousemove', handleDragMove);
+    document.addEventListener('mouseup', handleDragEnd);
+    
+    // Touch events
+    carousel.addEventListener('touchstart', handleDragStart, { passive: false });
+    document.addEventListener('touchmove', handleDragMove, { passive: false });
+    carousel.addEventListener('touchend', handleDragEnd, { passive: false });
+    
+    // Button click handlers
+    prevBtn.addEventListener('click', function() {
+      if (isTransitioning || isDragging) return;
+      
+      isTransitioning = true;
+      currentPosition = Math.max(0, currentPosition - cardWidth);
+      updateCarousel(true);
+      
+      setTimeout(() => {
+        handleInfiniteLoop();
+        isTransitioning = false;
+      }, 500);
+    });
+    
+    nextBtn.addEventListener('click', function() {
+      if (isTransitioning || isDragging) return;
+      
+      isTransitioning = true;
+      currentPosition += cardWidth;
+      updateCarousel(true);
+      
+      setTimeout(() => {
+        handleInfiniteLoop();
+        isTransitioning = false;
+      }, 500);
+    });
+    
+    // Initialize
+    updateCarousel(false);
+    
+    // Handle window resize
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        currentPosition = originalItemCount * cardWidth;
+        updateCarousel(false);
+      }, 250);
+    });
+    
+    // Prevent context menu on right click
+    carousel.addEventListener('contextmenu', (e) => e.preventDefault());
+  });
+</script> 

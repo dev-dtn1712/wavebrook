@@ -1,0 +1,363 @@
+---
+// Header component for Wavebrook
+import HamburgerMenu from './icons/HamburgerMenu.astro';
+import Close from './icons/Close.astro';
+// Navigation links data
+const navLinks = [
+  { text: 'Case Studies', href: '/case-studies' },
+  { text: 'About', href: '/about' },
+  { text: 'Events', href: '/events' },
+];
+
+// Dropdown links for "For Partners"
+const partnerLinks = [
+  { text: 'Become a Partner', href: '/become-a-partner' },
+  { text: 'Affiliates', href: '/affiliates' },
+];
+
+// Auth buttons data
+const authButtons = [
+  { text: 'Log In', variant: 'outline' },
+  { text: 'Sign Up', variant: 'filled' },
+];
+
+// Mobile menu sections with expandable content
+const mobileMenuSections = [
+  {
+    title: 'Products',
+    href: '/products',
+    expandable: false,
+  },
+  {
+    title: 'Developers',
+    expandable: true,
+    items: [
+      {
+        title: 'Case Studies',
+        href: '/case-studies',
+        icon: '📄',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales purus tincidunt mi commodo mollis.',
+      },
+      // {
+      //   title: 'Support',
+      //   href: '#',
+      //   icon: '🎧',
+      //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      // },
+    ],
+  },
+  {
+    title: 'Partners',
+    expandable: false,
+    href: '/become-a-partner',
+  },
+  {
+    title: 'Company',
+    expandable: false,
+    href: '/about',
+  },
+];
+---
+
+<header class='backdrop-blur-md z-50 w-full'>
+  <div class='max-w-[90rem] mx-auto flex items-center justify-between p-6 lg:py-[1.75rem] lg:px-16'>
+    <!-- Logo -->
+    <a href='/' class='flex items-center'>
+      <img src='/wavebrook.png' alt='Wavebrook' class='h-auto w-auto' />
+    </a>
+
+    <!-- Navigation -->
+    <nav class='hidden lg:flex items-center space-x-8'>
+      <!-- For Products Dropdown -->
+      <div class='relative group'>
+        <a
+          href='/products'
+          class='text-[#0A0A0A] hover:text-[#024349] font-semibold text-base transition-colors flex items-center'
+        >
+          Products
+          <svg class='ml-1 w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'
+            ></path>
+          </svg>
+        </a>
+        <!-- Dropdown menu (hidden by default) -->
+        <div
+          class='absolute z-50 top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 flex flex-col p-6'
+        >
+          <a href='/products'>
+            <h4 class='font-bold text-base mb-3 w-fit flex items-center'>
+              NetSignal SDK
+              <svg
+                class='ml-1 w-4 h-4 -rotate-90 inline'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M19 9l-7 7-7-7'></path>
+              </svg>
+            </h4>
+            <p class='font-thin text-sm mb-5'>
+              Powerful software development kit created for advanced network signal analysis,
+              monitoring, and optimization.
+            </p>
+            <img src='/assets/decoratives/NavbarProductsImg.png' alt='NavbarProductsImg' />
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Navigation Links -->
+      {
+        navLinks.map(link => (
+          <a
+            href={link.href}
+            class='text-[#0A0A0A] hover:text-[#024349] font-semibold text-base transition-colors'
+          >
+            {link.text}
+          </a>
+        ))
+      }
+
+      <!-- For Partners Dropdown -->
+      <div class='relative group'>
+        <a
+          href='#'
+          class='text-[#0A0A0A] hover:text-[#024349] font-semibold text-base transition-colors flex items-center'
+        >
+          For Partners
+          <svg class='ml-1 w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'
+            ></path>
+          </svg>
+        </a>
+        <!-- Dropdown menu (hidden by default) -->
+        <div
+          class='absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'
+        >
+          {
+            partnerLinks.map((link, index) => (
+              <a
+                href={link.href}
+                class={`block px-4 py-2 text-[#0A0A0A] hover:bg-gray-50 ${
+                  index === 0 ? 'rounded-t-lg' : ''
+                } ${index === partnerLinks.length - 1 ? 'rounded-b-lg' : ''}`}
+              >
+                {link.text}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Support Link -->
+      <!-- <a -->
+      <!--   href='#' -->
+      <!--   class='text-[#0A0A0A] hover:text-[#024349] font-semibold text-base transition-colors flex items-center' -->
+      <!-- > -->
+      <!--   Support -->
+      <!--   <svg class='ml-1 w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'> -->
+      <!--     <path -->
+      <!--       stroke-linecap='round' -->
+      <!--       stroke-linejoin='round' -->
+      <!--       stroke-width='2' -->
+      <!--       d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'></path> -->
+      <!--   </svg> -->
+      <!-- </a> -->
+    </nav>
+
+    <!-- Auth Buttons -->
+    <div class='hidden lg:flex items-center space-x-4'>
+      {
+        authButtons.map(button => (
+          <button
+            class={
+              button.variant === 'outline'
+                ? 'px-4 py-2 lg:py-[1.125rem] lg:px-[2.25rem] text-[#024349] font-bold text-base border border-[#024349] leading-none hover:bg-gray-50 rounded-full transition-colors'
+                : 'px-6 py-2 lg:py-[1.125rem] lg:px-[2.25rem] bg-[#024349] text-white font-bold text-base leading-none rounded-full hover:bg-[#059669] transition-colors'
+            }
+          >
+            {button.text}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Mobile menu button -->
+    <button
+      class='lg:hidden p-2 text-[#0A0A0A] hover:text-[#024349] z-50 relative'
+      id='mobile-menu-button'
+    >
+      <HamburgerMenu />
+    </button>
+  </div>
+
+  <!-- Mobile menu overlay -->
+  <div
+    class='lg:hidden fixed inset-0 bg-black/50 z-40 opacity-0 invisible transition-all duration-500'
+    id='mobile-overlay'
+  >
+  </div>
+
+  <!-- Mobile menu (slide from right) -->
+  <div
+    class='lg:hidden fixed top-0 right-0 h-dvh w-screen bg-white z-50 transform translate-x-full transition-transform duration-500 shadow-xl flex flex-col'
+    id='mobile-menu'
+  >
+    <!-- Mobile menu header -->
+    <div
+      class='flex items-center justify-between p-6 border-b border-gray-100 bg-white flex-shrink-0'
+    >
+      <a href='/' class='flex items-center'>
+        <img src='/wavebrook.png' alt='Wavebrook' class='h-auto w-auto' />
+      </a>
+      <button class='p-2 text-[#0A0A0A] hover:text-[#024349]' id='mobile-close-button'>
+        <Close className='w-5 h-5' />
+      </button>
+    </div>
+
+    <!-- Menu sections with scroll -->
+    <div class='px-6 py-4 flex-1 overflow-y-auto min-h-0'>
+      <div class='space-y-1'>
+        {
+          mobileMenuSections.map((section, sectionIndex) => (
+            <div class='border-b border-gray-100 last:border-b-0'>
+              {section.expandable ? (
+                <div>
+                  <button
+                    class='flex items-center w-full text-left py-4 text-[#0A0A0A] hover:text-[#024349] font-semibold text-2xl mobile-section-toggle'
+                    data-section={sectionIndex}
+                  >
+                    {section.title}
+                    <img
+                      src='/assets/icons/menu-arrow.svg'
+                      alt='menu-arrow'
+                      class='ml-3 mobile-section-arrow opacity-50'
+                    />
+                  </button>
+                  <div class='overflow-hidden transition-all duration-300 max-h-0'>
+                    <div class='pb-4 space-y-2'>
+                      {section.items?.map(item => (
+                        <a
+                          href={item.href}
+                          class='flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors'
+                        >
+                          <div class='text-2xl flex-shrink-0'>{item.icon}</div>
+                          <div class='flex-1 min-w-0'>
+                            <h4 class='font-semibold text-[#0A0A0A] mb-1'>{item.title}</h4>
+                            <p class='text-sm text-gray-600 leading-relaxed'>{item.description}</p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  href={section.href}
+                  class='py-4 text-[#0A0A0A] hover:text-[#024349] font-semibold text-2xl flex'
+                >
+                  {section.title}
+                  <img
+                    src='/assets/icons/menu-arrow.svg'
+                    alt='menu-arrow'
+                    class='ml-3 mobile-section-arrow opacity-50'
+                  />
+                </a>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Auth buttons fixed at bottom -->
+    <div class='px-6 py-4 border-t border-gray-100 bg-white flex-shrink-0'>
+      <div class='space-y-3'>
+        {
+          authButtons.map(button => (
+            <button
+              class={
+                button.variant === 'outline'
+                  ? 'block w-full px-6 py-4 text-[#024349] font-bold border-2 border-[#024349] rounded-full hover:bg-gray-50 transition-colors'
+                  : 'block w-full px-6 py-4 bg-[#024349] text-[#E8FDF0] font-bold rounded-full hover:bg-[#059669] transition-colors'
+              }
+            >
+              {button.text}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileCloseButton = document.getElementById('mobile-close-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const sectionToggles = document.querySelectorAll('.mobile-section-toggle');
+
+    function openMenu() {
+      mobileMenu?.classList.remove('translate-x-full');
+      mobileOverlay?.classList.remove('opacity-0', 'invisible');
+      hamburgerIcon?.classList.add('opacity-0');
+      closeIcon?.classList.remove('opacity-0');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu?.classList.add('translate-x-full');
+      mobileOverlay?.classList.add('opacity-0', 'invisible');
+      hamburgerIcon?.classList.remove('opacity-0');
+      closeIcon?.classList.add('opacity-0');
+      document.body.style.overflow = '';
+    }
+
+    // Toggle menu
+    mobileMenuButton?.addEventListener('click', openMenu);
+    mobileCloseButton?.addEventListener('click', closeMenu);
+    mobileOverlay?.addEventListener('click', closeMenu);
+
+    // Section toggles
+    sectionToggles.forEach(toggle => {
+      toggle.addEventListener('click', function (this: HTMLElement) {
+        const sectionIndex = this.getAttribute('data-section');
+        const content = this.nextElementSibling as HTMLElement;
+        const arrow = this.querySelector('.mobile-section-arrow') as HTMLElement;
+        const isCurrentlyOpen = content?.classList.contains('max-h-40');
+
+        // Close all sections first
+        sectionToggles.forEach((otherToggle, index) => {
+          const otherContent = otherToggle.nextElementSibling as HTMLElement;
+          const otherArrow = otherToggle.querySelector('.mobile-section-arrow') as HTMLElement;
+          otherContent?.classList.add('max-h-0');
+          otherContent?.classList.remove('max-h-40');
+          otherArrow?.classList.remove('rotate-180', 'opacity-100');
+        });
+
+        // If the clicked section wasn't open, open it
+        if (!isCurrentlyOpen) {
+          content?.classList.remove('max-h-0');
+          content?.classList.add('max-h-40');
+          arrow?.classList.add('rotate-180', 'opacity-100');
+        }
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+  });
+</script>

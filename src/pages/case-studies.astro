@@ -1,0 +1,39 @@
+---
+// Case Studies page for Wavebrook
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CaseStudiesHero from '../components/CaseStudiesHero.astro';
+import CaseStudiesGrid from '../components/CaseStudiesGrid.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title='Case Studies - Wavebrook Success Stories'
+  description='See how integrating Wavebrook SDK has led to better monetization and technical performance for real apps. Discover their stories here.'
+>
+  <Header />
+  <main>
+    <CaseStudiesHero />
+    <CaseStudiesGrid />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Additional page-specific styles if needed */
+  main {
+    overflow-x: hidden;
+    background-image:
+      url('/assets/decoratives/mainbg1.png'), url('/assets/decoratives/mainbg2.png'),
+      url('/assets/decoratives/mainbg3.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position:
+      right 15%,
+      85% 5%,
+      left 40%;
+    background-size:
+      clamp(760px, 40vw, 50vw) clamp(700px, 70vh, 80vh),
+      clamp(auto, 15vw, 200px) auto,
+      clamp(auto, 15vw, 200px) auto;
+  }
+</style>

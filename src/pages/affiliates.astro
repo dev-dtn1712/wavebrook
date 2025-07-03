@@ -1,0 +1,46 @@
+---
+// Affiliates page for Wavebrook
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import AffiliateHero from '../components/AffiliateHero.astro';
+import AffiliateBenefits from '../components/AffiliateBenefits.astro';
+import AffiliateHowItWorks from '../components/AffiliateHowItWorks.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title='Join the Wavebrook Affiliate Program'
+  description="Whether you're a tech blogger, app developer, or marketing pro, our affiliate program is a simple way to generate passive income while supporting advanced data solutions."
+>
+  <div class='bg-[#BEFFD7]'>
+    <Header />
+  </div>
+  <main>
+    <AffiliateHero />
+    <AffiliateBenefits />
+    <AffiliateHowItWorks />
+    <div class='bg-[#EDFDF3]'>
+      <Contact
+        subtitle='Ready to Earn?'
+        title="Apply now and let's<br><span class='block'>grow together!</span>"
+        body='Contact us today to explore how Wavebrook can empower your business with actionable data insights.'
+        ctaText='Looking for Partnership?'
+        cta='Become a Partner'
+        ctaLink='/become-a-partner'
+        formCta='Apply as an Affiliate'
+      />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Additional page-specific styles if needed */
+  main {
+    overflow-x: hidden;
+    background-color: #beffd7;
+    background-image: url('/assets/decoratives/grill.svg');
+    pointer-events: none;
+  }
+</style>

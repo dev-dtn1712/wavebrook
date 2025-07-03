@@ -1,0 +1,307 @@
+---
+// Testimonials component for Wavebrook
+import TestimonialEllipse from './icons/TestimonialEllipse.astro';
+import TestimonialQuote from './icons/TestimonialQuote.astro';
+
+const testimonials = [
+  {
+    quote: 'I have a good experience with those guys payments for integration I got stable and regular',
+    name: 'Road Soft',
+    role: 'Road Soft',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: 'Integrating Wavebrook\'s SDK was a game-changer for us. It gave us the flexibility to build smarter features and expand our reach without overhauling our infrastructure. We were looking for a solution that could grow with us. Wavebrook delivered seamless integration, robust features, and real-time performance across continents.',
+    name: 'Alex Kim',
+    role: 'Lead Product Engineer / Skybit Systems',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: 'From day one, Wavebrook felt like an extension of our team — intuitive, scalable, and built with developers in mind. It helped us execute the vision we had for our product.',
+    name: 'Alex Kim',
+    role: 'Lead Product Engineer / Skybit Systems',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: 'Integrating Wavebrook\'s SDK was a game-changer for us. It gave us the flexibility to build smarter features and expand our reach without overhauling our infrastructure. We were looking for a solution that could grow with us. Wavebrook delivered seamless integration, robust features, and real-time performance across continents.',
+    name: 'Alex Kim',
+    role: 'Lead Product Engineer / Skybit Systems',
+    avatar: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: "Integrating Wavebrook's SDK was a game-changer for us. It gave us the flexibility to build smarter features and expand our reach without overhauling our infrastructure. We were looking for a solution that could grow with us.",
+    name: 'Alex Kim',
+    role: 'Lead Product Engineer / Skybit Systems',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: 'I have a good experience with those guys payments for integration I got stable and regular',
+    name: 'Road Soft',
+    role: 'Road Soft',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: 'From day one, Wavebrook felt like an extension of our team — intuitive, scalable, and built with developers in mind. It helped us elevate the user experience.',
+    name: 'Alex Kim',
+    role: 'Lead Product Engineer / Skybit Systems',
+    avatar: 'https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: "Integrating Wavebrook's SDK was a game-changer for us. It gave us the flexibility to build smarter features and expand our reach without overhauling our infrastructure.",
+    name: 'Alex Kim',
+    role: 'Lead Product Engineer / Skybit Systems',
+    avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=64&h=64&fit=crop&crop=face',
+  },
+  {
+    quote: "Integrating Wavebrook's SDK was a game-changer for us. It gave us the flexibility to build smarter features and expand our reach without overhauling our infrastructure. We were looking for a solution that could grow with us.",
+    name: 'Alex Kim',
+    role: 'Lead Product Engineer / Skybit Systems',
+    avatar: 'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w-64&h=64&fit=crop&crop=face',
+  },
+];
+
+// Duplicate testimonials multiple times for infinite scroll effect
+const duplicatedTestimonials = [
+  ...testimonials,
+  ...testimonials,
+  ...testimonials,
+  ...testimonials,
+];
+---
+
+<section class="relative px-[0.625rem] md:px-6 pb-6">
+  <div class="max-w-[90rem] bg-[#D6FBFE] mx-auto px-10 pt-10 md:pt-[7.75rem] rounded-2xl relative overflow-hidden">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <p class="badge-primary mb-6">
+        TRUSTED BY THE COMMUNITY
+      </p>
+      <h2 class="text-[#0A0A0A] font-semibold text-2xl md:text-[2rem] leading-[1.3] tracking-[-0.01em]">
+        Trusted by Industry Leaders
+        <span class="block">and App Developers</span>
+      </h2>
+    </div>
+    
+    <!-- Mobile View: Static testimonials with Load More -->
+    <div class="md:hidden" id="mobile-testimonials">
+      <div class="flex flex-col gap-6" id="testimonials-container">
+        {testimonials.map((testimonial, index) => (
+          <div 
+            class={`bg-white rounded-lg p-6 hover:shadow-lg transition-all duration-300 card-hover testimonial-card ${index >= 3 ? 'hidden' : ''}`}
+            data-index={index}
+          >
+            <!-- Quote -->
+            <div class="mb-6">
+              <div class="mb-4">
+                <TestimonialQuote />
+              </div>
+              <p class="text-black/90 leading-relaxed text-sm font-medium">
+                {testimonial.quote}
+              </p>
+            </div>
+            
+            <!-- Author -->
+            <div class="flex items-center w-full justify-between">
+              <div>
+                <h4 class="font-semibold text-black text-sm">{testimonial.name}</h4>
+                <p class="text-black/60 text-xs">{testimonial.role}</p>
+              </div>
+              <img 
+                src={testimonial.avatar} 
+                alt={testimonial.name}
+                class="w-12 h-12 rounded-md object-cover"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Load More Button (Mobile Only) -->
+      <div class="text-center py-[2.125rem]">
+        <button 
+          id="load-more-btn"
+          class="text-base text-[#024349] font-medium flex items-center justify-center mx-auto"
+        >
+        Show more
+          <svg class="ml-2 w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop View: Infinite scrolling testimonials -->
+    <div class="hidden md:block relative">
+      <div class="testimonials-infinite-container max-h-[92vh] overflow-hidden relative">
+        <!-- Gradient overlays for smooth fade effect -->
+        <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#D6FBFE] to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#D6FBFE] to-transparent z-10 pointer-events-none"></div>
+        
+        <!-- Scrolling testimonials track -->
+        <div class="testimonials-track">
+          <div class="testimonials-scroll columns-2 lg:columns-3 gap-6">
+            {duplicatedTestimonials.map((testimonial) => (
+              <div class="bg-white rounded-lg p-6 hover:shadow-lg transition-all duration-300 card-hover break-inside-avoid mb-6 testimonial-infinite-card">
+                <!-- Quote -->
+                <div class="mb-6">
+                  <div class="mb-4">
+                    <TestimonialQuote />
+                  </div>
+                  <p class="text-black/90 leading-relaxed text-base font-medium">
+                    {testimonial.quote}
+                  </p>
+                </div>
+                
+                <!-- Author -->
+                <div class="flex items-center w-full justify-between">
+                  <div>
+                    <h4 class="font-semibold text-black text-base">{testimonial.name}</h4>
+                    <p class="text-black/60 text-sm">{testimonial.role}</p>
+                  </div>
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={testimonial.name}
+                    class="w-12 h-12 rounded-md object-cover"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial Ellipse Overlay -->
+    <div class="hidden md:block absolute bottom-0 left-0 right-0 w-full pointer-events-none z-10">
+      <TestimonialEllipse />
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    let showingAll = false;
+
+    loadMoreBtn?.addEventListener('click', function() {
+      if (!showingAll) {
+        // Show all testimonials with animation
+        const hiddenCards = Array.from(testimonialCards).filter((card, index) => index >= 3);
+        
+        hiddenCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.remove('hidden');
+            card.classList.add('animate-fadeInUp');
+          }, index * 100); // Stagger animation by 100ms
+        });
+        
+        // Update button text and icon
+        loadMoreBtn.innerHTML = `
+          Show less
+          <svg class="ml-2 w-4 h-4 transition-transform duration-200 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        `;
+        showingAll = true;
+      } else {
+        // Hide testimonials after first 3 with fade out
+        const hiddenCards = Array.from(testimonialCards).filter((card, index) => index >= 3);
+        
+        hiddenCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('animate-fadeOut');
+            setTimeout(() => {
+              card.classList.add('hidden');
+              card.classList.remove('animate-fadeOut', 'animate-fadeInUp');
+            }, 300); // Wait for fade out to complete
+          }, index * 50); // Faster stagger for hiding
+        });
+        
+        // Update button text and icon
+        loadMoreBtn.innerHTML = `
+          Load more
+          <svg class="ml-2 w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        `;
+        showingAll = false;
+        
+        // Scroll back to testimonials section smoothly after animations
+        setTimeout(() => {
+          document.getElementById('testimonials-container')?.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }, 400);
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Infinite scroll animation for desktop */
+  .testimonials-track {
+    animation: scrollDown 60s linear infinite;
+  }
+
+  @keyframes scrollDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  /* Pause animation on hover */
+  .testimonials-infinite-container:hover .testimonials-track {
+    animation-play-state: paused;
+  }
+
+  /* Mobile load more animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.4s ease-out forwards;
+  }
+
+  .animate-fadeOut {
+    animation: fadeOut 0.3s ease-in forwards;
+  }
+
+  /* Ensure smooth transitions */
+  .testimonial-card {
+    transition: all 0.3s ease;
+  }
+
+  /* Smooth scrolling for infinite testimonials */
+  .testimonial-infinite-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .testimonial-infinite-card:hover {
+    transform: translateY(-2px);
+  }
+</style> 

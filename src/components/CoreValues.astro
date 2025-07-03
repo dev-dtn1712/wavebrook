@@ -1,0 +1,81 @@
+---
+// Core Values section
+const values = [
+  {
+    id: 1,
+    title: 'Data Access',
+    description: 'Gain valuable insights into user behavior and network performance.',
+  },
+  {
+    id: 2,
+    title: 'Data Access', 
+    description: 'Gain valuable insights into user behavior and network performance.',
+  },
+  {
+    id: 3,
+    title: 'Data Access',
+    description: 'Gain valuable insights into user behavior and network performance.',
+  },
+  {
+    id: 4,
+    title: 'Data Access',
+    description: 'Gain valuable insights into user behavior and network performance.',
+  },
+  {
+    id: 5,
+    title: 'Data Access',
+    description: 'Gain valuable insights into user behavior and network performance.',
+  },
+  {
+    id: 6,
+    title: 'Data Access',
+    description: 'Gain valuable insights into user behavior and network performance.',
+  },
+];
+---
+
+<section class="py-20 mx-6 mb-4 bg-white rounded-2xl">
+  <div class="max-w-[90rem] mx-auto px-6">
+    
+    <!-- Header -->
+    <div class="mb-16">
+      <h2 class="text-3xl md:text-4xl font-semibold text-black mb-6">Core Values:</h2>
+      <p class="text-[#000000CC] leading-relaxed max-w-2xl">
+        See our SDK in turn your app traffic into monthly revenue, while helping improve mobile network quality worldwide.
+      </p>
+    </div>
+
+    <!-- Values Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {values.map(value => (
+        <div class="bg-[#EDFDF3] rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 value-card">
+          <!-- Checkmark Icon -->
+          <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-4">
+            <img src="/assets/icons/checkmark.png" alt="checkmark" class="w-6">
+          </div>
+          
+          <h3 class="text-xl font-semibold text-[#024349] mb-3">{value.title}</h3>
+          <p class="text-gray-600 leading-relaxed text-sm">{value.description}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section> 
+
+<style>
+  h2 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: -1%;
+  }
+
+  .value-card {
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008;
+  }
+  
+  .value-card:hover {
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008, 4px 4px 0px 0px #024349;
+  }
+</style>

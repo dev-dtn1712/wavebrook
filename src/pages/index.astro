@@ -1,0 +1,42 @@
+---
+// Main landing page for Wavebrook
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import FeatureCards from '../components/FeatureCards.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CallToAction from '../components/CallToAction.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title='Wavebrook - Empowering global connectivity through app innovation'
+  description='We help app developers grow while enabling partners worldwide to enhance mobile networks through real-world insights.'
+>
+  <Header />
+  <main>
+    <div class='bg-hero'>
+      <Hero />
+      <FeatureCards />
+    </div>
+    <Testimonials />
+    <CallToAction />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Additional page-specific styles if needed */
+  main {
+    overflow-x: hidden;
+  }
+
+  .bg-hero {
+    background-image:
+      url('/assets/decoratives/GridVector.svg'), url('/assets/decoratives/HeroVector.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position:
+      center top,
+      right top;
+  }
+</style>

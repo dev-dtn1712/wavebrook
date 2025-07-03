@@ -1,0 +1,153 @@
+---
+// Hero section component for Wavebrook
+// import GridVector from './icons/GridVector.svg';
+// import HeroVector from './icons/HeroVector.svg';
+
+// Array de logos con src y alt
+const logos = [
+  { src: '/assets/logos/vz-2_1c_rgb_p 1.png', alt: 'Verizon' },
+  { src: '/assets/logos/BT_logo_2019 1.png', alt: 'BT' },
+  { src: '/assets/logos/T-Mobile_logo_2022 1.png', alt: 'T-Mobile' },
+  { src: '/assets/logos/Logo_de_America_Movil 1.png', alt: 'América Móvil' },
+  { src: '/assets/logos/mtn-logo 1.png', alt: 'MTN' },
+  { src: '/assets/logos/Singtel_logo 1.png', alt: 'Singtel' },
+  { src: '/assets/logos/AT&T_logo_2016 1.png', alt: 'AT&T' },
+  { src: '/assets/logos/Vodafone_icon 1.png', alt: 'Vodafone' },
+  { src: '/assets/logos/Orange_logo 1.png', alt: 'Orange' },
+  { src: '/assets/logos/Three_logo 1.png', alt: 'Three' },
+  { src: '/assets/logos/Swisscom_Logo 1.png', alt: 'Swisscom' },
+  { src: '/assets/logos/Tele2_logo 1.png', alt: 'Tele2' },
+  { src: '/assets/logos/telstra-seeklogo 1.png', alt: 'Telstra' },
+  { src: '/assets/logos/SK-telecom_RGB_EN_Black 1.png', alt: 'SK Telecom' },
+  { src: '/assets/logos/True_Corporation_(Thailand) 1.png', alt: 'True Corporation' },
+  { src: '/assets/logos/NTT_docomo_company_logos 1.png', alt: 'NTT Docomo' },
+  { src: '/assets/logos/KDDI_logos 1.png', alt: 'KDDI' },
+  { src: '/assets/logos/Logo_TIM_(2016) 1.png', alt: 'TIM' },
+];
+---
+
+<section
+  class='relative grid-pattern max-h-[900px] md:pb-0 py-40 flex items-center overflow-hidden'
+>
+  <!-- Grid Vector Background -->
+  <!-- <div class='absolute inset-0 w-full h-full pointer-events-none'> -->
+  <!--   <GridVector /> -->
+  <!-- </div> -->
+
+  <!-- Hero Vector - Right Side -->
+  <!-- <div -->
+  <!--   class='absolute -bottom-[6rem] -left-[12rem] scale-[0.8] md:scale-[1] md:right-0 md:bottom-auto md:left-auto md:top-1/2 md:-translate-y-1/2 w-auto h-auto pointer-events-none block' -->
+  <!-- > -->
+  <!--   <HeroVector /> -->
+  <!-- </div> -->
+
+  <div class='max-w-[90rem] mx-auto px-[0.625rem] md:px-6 text-center relative z-10 w-full'>
+    <!-- Main Headline -->
+    <h1
+      class='text-4xl md:text-[3.625rem] font-semibold text-[#0A0A0A] mb-6 leading-[1.2] md:leading-[1.3] tracking-[-0.02em] md:tracking-[-0.03em]'
+    >
+      Empowering global connectivity
+      <span class='text-gradient block'>through app innovation</span>
+    </h1>
+
+    <!-- Subheading -->
+    <p
+      class='text-sm md:text-base font-medium text-[#0A0A0ACC] mb-[6.25rem] md:mb-[12.75rem] max-w-lg md:max-w-xl tracking-normal mx-auto leading-relaxed md:leading-normal'
+    >
+      We help app developers grow while enabling partners worldwide to enhance mobile networks
+      through real-world insights.
+    </p>
+
+    <!-- Partners Section -->
+    <div class='md:pl-10'>
+      <p
+        class='text-sm md:text-base text-black/90 mb-8 tracking-normal text-center md:text-left leading-normal font-semibold'
+      >
+        Helping improve global connectivity
+      </p>
+
+      <!-- Logo Carousel -->
+      <div class='relative w-full overflow-hidden'>
+        <!-- Gradient overlays for blur effect -->
+        <div
+          class='absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-[#EDFDF3] to-transparent z-10 pointer-events-none'
+        >
+        </div>
+        <div
+          class='absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-[#EDFDF3] to-transparent z-10 pointer-events-none'
+        >
+        </div>
+
+        <!-- Carousel container -->
+        <div class='carousel-container h-8 md:h-11 flex items-center'>
+          <div class='carousel-track flex items-center animate-scroll'>
+            {
+              logos.concat(logos).map(logo => (
+                <div class='carousel-item flex-shrink-0 flex items-center justify-center mx-4 md:mx-[2.7rem]'>
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    class='h-5 md:h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0'
+                    loading='lazy'
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-gradient {
+    background: linear-gradient(90deg, #024349 0%, #05a1af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .carousel-container {
+    /* Height: 2rem (32px) mobile, 2.75rem (44px) desktop */
+    height: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .carousel-container {
+      height: 2.75rem;
+    }
+  }
+
+  .carousel-track {
+    /* Infinite scroll animation */
+    animation: scroll 60s linear infinite;
+    width: max-content;
+  }
+
+  .carousel-item {
+    /* Spacing: 1rem (16px) mobile, 5.4rem (86.4px) desktop */
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .carousel-item {
+      margin-left: 2.7rem;
+      margin-right: 2.7rem;
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause animation on hover */
+  .carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+  }
+</style>

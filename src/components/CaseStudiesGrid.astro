@@ -1,0 +1,140 @@
+---
+// Case Studies Grid component
+import CaseStudyDetail from './CaseStudyDetail.astro';
+
+const caseStudies = [
+  {
+    id: 1,
+    company: 'AIRTUNER',
+    logo: '/assets/logos/Airtuner.png',
+    title: 'Amplifying Monetization with NetSignal SDK',
+    description: 'We support apps with millions of users worldwide. Developers across tools, productivity, and entertainment categories trust our products to bring more value through data.',
+    date: 'MAY 9, 2025',
+    readTime: '9 MIN READ',
+  },
+  {
+    id: 2,
+    company: 'FASTMETER',
+    logo: '/assets/logos/Fastmeter.png',
+    title: 'How Age of Learning A/B tests upsell experiences with Rive',
+    description: 'We support apps with millions of users worldwide. Developers across tools, productivity, and entertainment categories trust our products to bring more value through data.',
+    date: 'MAY 9, 2025',
+    readTime: '9 MIN READ',
+  },
+  {
+    id: 3,
+    company: 'STRONGVIBES',
+    logo: '/assets/logos/Strongvibes.png',
+    title: 'How Age of Learning A/B tests upsell experiences with Rive',
+    description: 'We support apps with millions of users worldwide. Developers across tools, productivity, and entertainment categories trust our products to bring more value through data.',
+    date: 'MAY 9, 2025',
+    readTime: '9 MIN READ',
+  },
+  {
+    id: 4,
+    company: 'VIDUBE',
+    logo: '/assets/logos/Vidube.png',
+    title: 'How Age of Learning A/B tests upsell experiences with Rive',
+    description: 'We support apps with millions of users worldwide. Developers across tools, productivity, and entertainment categories trust our products to bring more value through data.',
+    date: 'MAY 9, 2025',
+    readTime: '9 MIN READ',
+  },
+  {
+    id: 5,
+    company: 'SPEEDROCKET',
+    logo: '/assets/logos/Speedrocket.png',
+    title: 'How Age of Learning A/B tests upsell experiences with Rive',
+    description: 'We support apps with millions of users worldwide. Developers across tools, productivity, and entertainment categories trust our products to bring more value through data.',
+    date: 'MAY 9, 2025',
+    readTime: '9 MIN READ',
+  },
+];
+---
+
+<section class="px-8 md:px-16 md:pb-[8.75rem] pb-16 relative">
+  <div class="max-w-[90rem] mx-auto px-6">
+    
+    <!-- Case Studies Grid -->
+    <div class="grid lg:grid-cols-2 gap-8">
+      
+      {caseStudies.map((study) => (
+        <article class="group cursor-pointer transition-all duration-300" data-case-study-id={study.id}>
+          <div class="bg-white rounded-2xl transition-all duration-300 overflow-hidden h-full flex flex-col case-study-card">
+            
+            <!-- Case Study Header -->
+            <div class="p-8 pb-0 flex-1">
+              <div class="flex items-center space-x-3 mb-6">
+                <!-- Wavebrook Logo -->
+                <div class="w-8 h-8 bg-[#024349] rounded-lg flex items-center justify-center">
+                  <img src="/assets/logos/Wavebrook.png" alt="Wavebrook" class="w-full h-full object-contain" />
+                </div>
+                <span class="text-[#02434980] text-sm font-bold">&</span>
+                <!-- Company Logo -->
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                  <img src={study.logo} alt={study.company} class="w-full h-full object-contain" />
+                </div>
+                <span class="text-[#024349] font-bold text-sm tracking-normal">{study.company}</span>
+              </div>
+              
+              <!-- Title -->
+              <h3 class="text-xl md:text-2xl font-semibold text-[#080808] mb-4 leading-tight tracking-[-0.01em]">
+                {study.title}
+              </h3>
+              
+              <!-- Description -->
+              <p class="text-[#000000CC] leading-normal tracking-[-0.02em] text-sm md:text-base">
+                {study.description}
+              </p>
+            </div>
+            
+            <!-- Case Study Footer -->
+            <div class="px-8 pt-6 pb-8 mt-auto">
+              <div class="flex items-center gap-4 text-xs text-gray-500 pt-4 border-t border-gray-100">
+                <span class="font-bold text-[#024349]">{study.date}</span>
+                <span class="text-[#000000CC] text-base">•</span>
+                <span>{study.readTime}</span>
+              </div>
+            </div>
+            
+          </div>
+        </article>
+      ))}
+      
+    </div>
+  </div>
+</section>
+
+<!-- Case Study Detail Component -->
+<CaseStudyDetail />
+
+<style>
+  .case-study-card {
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008;
+  }
+  
+  .case-study-card:hover {
+    border: 1px solid #BEFFD7;
+    box-shadow: 0px 4px 16px 0px #0000000A, 0px -1px 6px 0px #00000008, 4px 4px 0px 0px #024349;
+  }
+</style>
+
+<script>
+  // Add click handlers to case study cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const caseStudyCards = document.querySelectorAll('[data-case-study-id]');
+    
+    caseStudyCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const caseStudyId = card.getAttribute('data-case-study-id');
+        
+        // Only open overlay for the first case study (AirTuner)
+        if (caseStudyId === '1') {
+          // Wait for CaseStudyDetail to be available
+          if ((window as any).CaseStudyDetail) {
+            (window as any).CaseStudyDetail.open();
+          }
+        }
+      });
+    });
+  });
+</script> 

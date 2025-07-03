@@ -1,0 +1,74 @@
+---
+import Arrow from './icons/Arrow.astro';
+import FeatureEllipse from './icons/FeatureEllipse.astro';
+
+// Feature Cards component for Wavebrook
+---
+
+<section class='pb-20 md:pt-28 md:pb-6'>
+  <div class='max-w-[90rem] mx-auto px-[0.625rem] md:px-6 relative z-10'>
+    <div class='grid md:grid-cols-2 gap-8'>
+      <!-- NetSignal SDK Card -->
+      <div class='bg-[#BEFFD7] rounded-xl pt-9 pb-5 px-5 md:pt-10 md:pb-0 md:px-10 card-hover'>
+        <div class='mb-14 md:mb-6'>
+          <span class='badge-primary mb-4'> NETSIGNAL SDK </span>
+          <h3 class='heading-large my-4 md:mt-6'>
+            Support global connectivity and grow your app revenue
+          </h3>
+          <p class='body-text mb-8'>
+            NetSignal SDK helps mobile networks improve coverage and performance using real-world
+            app data — while giving developers a new way to earn revenue with no impact on user
+            experience.
+          </p>
+
+          <button
+            class='inline-flex items-center p-4 bg-white text-[#024349] font-bold rounded-full hover:bg-[#059669] transition-all duration-300 group leading-none'
+          >
+            About NetSignal SDK
+            <Arrow className='ml-5 w-4 h-4 group-hover:translate-x-1 transition-transform' />
+          </button>
+        </div>
+
+        <!-- App Revenue Illustration -->
+        <div class='relative'>
+          <img
+            src='/assets/decoratives/app-revenue.png'
+            alt='App Revenue Dashboard'
+            class='w-full h-auto rounded-xl'
+            loading='lazy'
+          />
+        </div>
+      </div>
+
+      <!-- Integrations Card -->
+      <div
+        class='bg-white rounded-xl p-8 md:pt-10 md:pb-0 md:px-10 card-hover relative overflow-hidden'
+      >
+        <div class='mb-14 md:mb-6'>
+          <span class='badge-primary mb-4'> INTEGRATIONS </span>
+          <h3 class='heading-large my-4 md:mt-6'>Trusted by top apps across categories</h3>
+          <p class='body-text mb-8'>
+            We support apps with millions of users worldwide. Developers across tools, productivity,
+            and entertainment categories trust our products to bring more value through data.
+          </p>
+
+          <!-- Stats -->
+        </div>
+
+        <!-- Top Apps Illustration -->
+        <div class='relative z-[2] scale-[1.5] top-[2rem] md:top-0 sm:scale-100'>
+          <img
+            src='/assets/decoratives/top-apps.png'
+            alt='Top Apps Integration'
+            class='w-full h-auto rounded-xl'
+            loading='lazy'
+          />
+        </div>
+
+        <div class='absolute bottom-0 z-[1] right-0'>
+          <FeatureEllipse />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

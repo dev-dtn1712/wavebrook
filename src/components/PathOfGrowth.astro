@@ -1,0 +1,169 @@
+---
+// Path of Growth section
+const milestones = [
+  {
+    id: 1,
+    date: 'Apr 2012',
+    title: 'Launch',
+    description: 'Apply to join our affiliate program and get your unique affiliate link.',
+  },
+  {
+    id: 2,
+    date: 'May 2016',
+    title: 'Expansion',
+    description: 'Expanding network globe, integrating with over 50 major platforms and services.',
+  },
+  {
+    id: 3,
+    title: 'Milestone #3',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+  },
+  {
+    id: 4,
+    title: 'Milestone #4', 
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+  },
+  {
+    id: 5,
+    title: 'Milestone #5',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+  },
+];
+---
+
+<section class="pt-10 pb-5 md:py-20">
+  <div class="max-w-[90rem] min-h-[1550px] mx-auto timeline-bg relative">
+    <!-- Header -->
+    <div class="mb-14 mt-[118px] mx-6 px-0 md:px-8 md:mx-8 2xl:px-0 2xl:mx-0">
+      <p class="text-[#024349] font-semibold text-sm tracking-wide mb-4">OUR STORY</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-black mb-6">Path of Growth</h2>
+      <p class="text-[#000000CC] leading-relaxed max-w-[475px]">
+        Founded in 2012, Wavebrook started as a simple idea—to make data more accessible and actionable for app developers and network operators.
+      </p>
+    </div>
+
+    <!-- Timeline Cards Desktop -->
+    <!-- Card 1 -->
+    <div class="hidden md:block absolute left-[calc(42%-58px)] top-[calc(14%-3px)] max-w-[346px] max-h-[230px]">
+      <!-- Timeline Items -->
+      <div class="flex items-start left-0">
+        <!-- Content -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 max-w-md">
+            <p class="text-[#024349] font-bold text-2xl mb-2">Apr 2012</p>
+          <h3 class="text-xl font-semibold text-black mb-2">Launch</h3>
+          <p class="text-[#000000CC] leading-relaxed text-sm">Apply to join our affiliate program and get your unique referral link.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="hidden md:block absolute left-[calc(74%-55px)] top-[calc(35%+16px)] max-w-[346px] max-h-[230px]">
+      <!-- Timeline Items -->
+      <div class="flex items-start left-0">
+        <!-- Content -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 max-w-md">
+            <p class="text-[#024349] font-bold text-2xl mb-2">Apr 2012</p>
+          <h3 class="text-xl font-semibold text-black mb-2">Launch</h3>
+          <p class="text-[#000000CC] leading-relaxed text-sm">Apply to join our affiliate program and get your unique referral link.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="hidden md:block absolute left-[calc(26%-58px)] top-[calc(43%+10px)] max-w-[346px] max-h-[230px]">
+      <!-- Timeline Items -->
+      <div class="flex items-start left-0">
+        <!-- Content -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 max-w-md">
+            <p class="text-[#024349] font-bold text-2xl mb-2">Apr 2012</p>
+          <h3 class="text-xl font-semibold text-black mb-2">Launch</h3>
+          <p class="text-[#000000CC] leading-relaxed text-sm">Apply to join our affiliate program and get your unique referral link.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="hidden md:block absolute left-[calc(59%-73px)] top-[calc(66%-5px)] max-w-[346px] max-h-[230px]">
+      <!-- Timeline Items -->
+      <div class="flex items-start left-0">
+        <!-- Content -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 max-w-md">
+            <p class="text-[#024349] font-bold text-2xl mb-2">Apr 2012</p>
+          <h3 class="text-xl font-semibold text-black mb-2">Launch</h3>
+          <p class="text-[#000000CC] leading-relaxed text-sm">Apply to join our affiliate program and get your unique referral link.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="hidden md:block absolute left-[calc(26%-58px)] top-[calc(87%+18px)] max-w-[346px] max-h-[230px]">
+      <!-- Timeline Items -->
+      <div class="flex items-start left-0">
+        <!-- Content -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 max-w-md">
+            <p class="text-[#024349] font-bold text-2xl mb-2">Apr 2012</p>
+          <h3 class="text-xl font-semibold text-black mb-2">Launch</h3>
+          <p class="text-[#000000CC] leading-relaxed text-sm">Apply to join our affiliate program and get your unique referral link.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline Mobile -->
+    <div class="relative block md:hidden">
+      <!-- Vertical Line -->
+      <div class="absolute z-10 left-8 h-full w-0.5 bg-[#024349]"></div>
+      
+      <!-- Timeline Items -->
+      <div class="space-y-12">
+        {milestones.map((milestone, index) => (
+          <div class="relative flex items-start">
+            <!-- Timeline Dot -->
+            <div class="absolute left-6 w-4 h-4 bg-[#EDFDF3] rounded-full border-3 border-[#024349] shadow-lg z-20"></div>
+            <!-- Content -->
+            <div class="ml-12">
+
+              <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 max-w-[19rem]">
+                {milestone.date && (
+                  <p class="text-[#024349] font-bold text-2xl mb-2">{milestone.date}</p>
+                )}
+                <h3 class="text-xl font-semibold text-black mb-2">{milestone.title}</h3>
+                <p class="text-[#000000CC] leading-relaxed text-sm">{milestone.description}</p>
+              </div>
+            </div>
+            
+            <!-- Connecting Line (for visual effect) -->
+            {index < milestones.length - 1 && (
+              <div class="absolute left-8 top-8 w-px h-20 bg-emerald-200"></div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section> 
+
+<style>
+  @media (min-width: 768px) {
+    .timeline-bg {
+      background-image: url('/assets/decoratives/timeline.png');
+      background-repeat: no-repeat;
+      background-position: 60.6% 92px;
+      background-size: auto 1282px;
+    }
+  }
+
+  section {
+    background-color: #EDFDF3;
+    background-image: url('/assets/decoratives/grill.png'), 
+      url('/assets/decoratives/aboutbg5.png');
+    background-repeat: repeat, no-repeat;
+    background-position: center top, 90% 5%;
+  }
+
+  @media (max-width: 768px) {
+  section {
+      background-image: url('/assets/decoratives/grill-rotate.png');
+      background-position: center;
+    }
+  }
+</style>

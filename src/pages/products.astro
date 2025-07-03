@@ -1,0 +1,39 @@
+---
+// Products page for Wavebrook
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ProductHero from '../components/ProductHero.astro';
+import IntegrationSection from '../components/IntegrationSection.astro';
+import RevenueStreams from '../components/RevenueStreams.astro';
+import WhyChoose from '../components/WhyChoose.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CallToAction from '../components/CallToAction.astro';
+import Footer from '../components/Footer.astro';
+import MonthlyIncome from '../components/MonthlyIncome.astro';
+---
+
+<Layout
+  title='NetSignal SDK - Wavebrook Products'
+  description='Integrate our SDK and empower global connectivity with a few lines of code. Multiple revenue streams and seamless integration for developers.'
+>
+  <div class='bg-[#beffd7] z-50'>
+    <Header />
+  </div>
+  <main>
+    <ProductHero />
+    <IntegrationSection />
+    <RevenueStreams />
+    <WhyChoose />
+    <Testimonials />
+    <MonthlyIncome />
+    <CallToAction />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Additional page-specific styles if needed */
+  main {
+    overflow-x: hidden;
+  }
+</style>

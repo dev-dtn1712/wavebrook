@@ -1,0 +1,255 @@
+---
+import Arrow from '@/components/icons/Arrow.astro';
+import Footer from '@/components/Footer.astro';
+
+// Case Study Detail component
+---
+
+<!-- Case Study Overlay -->
+<div
+  id='caseStudyOverlay'
+  class='fixed top-0 left-0 pt-32 right-0 bottom-0 bg-[#EDFDF3] z-40 transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto'
+>
+  <div class='max-w-4xl mx-auto px-8 py-12'>
+    <!-- Back Button -->
+    <button
+      id='backButton'
+      class='flex items-center gap-4 justify-center text-[#024349CC] font-semibold tracking-[-0.03em] mb-8 hover:underline w-full cursor-pointer'
+    >
+      <Arrow className='rotate-180' />
+      Back to Case Studies
+    </button>
+
+    <!-- Header -->
+    <div class='text-center mb-12'>
+      <h1 class='hero-title font-bold mb-8'>Amplifying Monetization with NetSignal SDK</h1>
+      <p class='hero-description max-w-xl'>
+        AirTuner, a global radio streaming app, integrated Wavebrook SDK to tap into new revenue
+        streams while optimizing user data management. The result? A significant boost in
+        monetization and app performance.
+      </p>
+    </div>
+
+    <!-- App Info Table -->
+    <div class='bg-white rounded-xl p-6 mb-12 shadow-sm'>
+      <div class='grid grid-cols-4 gap-6'>
+        <div>
+          <p class='text-sm text-gray-500 mb-4'>App</p>
+          <div class='flex items-center gap-2'>
+            <img src='/assets/logos/Airtuner.png' alt='AirTuner' class='w-6 h-6' />
+            <span class='font-bold text-[#024349]'>AIRTUNER</span>
+          </div>
+        </div>
+        <div>
+          <p class='text-sm text-gray-500 mb-4'>Category / Market</p>
+          <span class='font-bold text-[#024349]'>GAMES / GAMING</span>
+        </div>
+        <div>
+          <p class='text-sm text-gray-500 mb-4'>DAU</p>
+          <span class='font-bold text-[#024349]'>11,342</span>
+        </div>
+        <div>
+          <p class='text-sm text-gray-500 mb-4'>SDK</p>
+          <span class='font-bold text-[#024349]'>NETSIGNAL SDK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intro Section -->
+    <div>
+      <h2 class='text-2xl font-bold text-[#024349] mb-6'>Intro</h2>
+      <p class='text-gray-700 leading-relaxed mb-4'>
+        AirTuner was looking to enhance its monetization strategy without disrupting user
+        experience. By implementing Wavebrook SDK, they gained access to advanced data monetization
+        tools and actionable insights. This allowed them to effectively monetize high-DAU countries
+        and maximize revenue from existing traffic.
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- Key Results Section -->
+    <div>
+      <h2 class='text-2xl font-bold text-[#024349] mb-6'>Key Results</h2>
+      <p class='text-gray-700 leading-relaxed mb-6'>
+        From travel to finance, SDKs help apps enhance user experience by adding robust
+        functionalities like analytics, real-time communication, and customer support.
+      </p>
+      <p class='text-gray-700 leading-relaxed mb-8'>
+        From travel to finance, SDKs help apps enhance user experience by adding robust
+        functionalities like analytics, real-time communication, and customer support.
+      </p>
+
+      <div class='bg-white rounded-xl p-6 space-y-4 shadow-[0px_6px_20px_-2px_#00000012]'>
+        <div class='flex items-start gap-3'>
+          <div class='w-2 h-2 bg-[#024349] rounded-full mt-2'></div>
+          <p class='text-gray-700'>
+            <span class='font-bold text-[#024349]'>Revenue Growth:</span> 30% increase in monthly ad
+            revenue within 90 days
+          </p>
+        </div>
+        <div class='flex items-start gap-3'>
+          <div class='w-2 h-2 bg-[#024349] rounded-full mt-2'></div>
+          <p class='text-gray-700'>
+            <span class='font-bold text-[#024349]'>Data Insights:</span> Improved data accuracy, resulting
+            in higher CPM rates
+          </p>
+        </div>
+        <div class='flex items-start gap-3'>
+          <div class='w-2 h-2 bg-[#024349] rounded-full mt-2'></div>
+          <p class='text-gray-700'>
+            <span class='font-bold text-[#024349]'>Enhanced Performance:</span> Optimized SDK integration
+            reduced latency by 15%
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Conclusion Section -->
+    <div class='mb-8'>
+      <div class='text-xs font-bold text-[#024349] mb-4 tracking-wide'>IN CONCLUSION</div>
+      <blockquote class='bg-white rounded-xl p-8 relative shadow-[0px_6px_20px_-2px_#00000012]'>
+        <p class='text-lg text-gray-800 font-bold mb-6 relative z-10'>
+          "Wavebrook SDK has been a game-changer for AirTuner. It's not just about revenue – it's
+          about smarter monetization. We're seeing stronger earnings without compromising user
+          experience."
+        </p>
+        <div class='flex items-center gap-3'>
+          <div class='w-12 h-12 bg-orange-500 rounded-lg'>
+            <img
+              src='/assets/decoratives/pfps/quote.jpg'
+              alt='Avatar pfp'
+              class='w-full h-full rounded-lg object-cover'
+            />
+          </div>
+          <div class='relative w-full'>
+            <p class='font-bold text-gray-800'>Road Soft</p>
+            <p class='text-gray-600 text-sm'>Road Soft</p>
+            <img
+              src='/assets/decoratives/quotes.svg'
+              alt='Quote Icon'
+              class='absolute right-4 bottom-4'
+            />
+          </div>
+        </div>
+      </blockquote>
+    </div>
+  </div>
+
+  <!--Call to Action Section-->
+  <div
+    class='mb-8 px-4 md:mx-6 rounded-2xl flex items-center relative overflow-hidden min-h-[400px] bg-[#BEFFD7] banner'
+  >
+    <div class='max-w-[90rem] w-full mx-auto banner-cta w-full flex items-end md:pr-[calc(5%)]'>
+      <div
+        class='relative z-10 flex flex-col w-fit md:ml-auto px-4 sm:px-6 md:px-10 py-12 sm:py-20 md:py-28 max-w-[550px]'
+      >
+        <h3 id='cta-heading' class='heading-3 mb-4 w-fit text-2xl md:text-4xl leading-tight'>
+          Ready to boost your app's revenue?
+        </h3>
+
+        <p class='mb-8 max-w-[30rem] text-base font-medium'>
+          Add our SDK to your app in minutes and start earning from real-world data. No impact on
+          user experience, full control and monthly payouts.
+        </p>
+
+        <button
+          class='bg-[#024349] rounded-md text-white font-bold py-3 px-6 hover:bg-[#059669] transition-colors duration-300 w-fit text-sm md:text-base'
+        >
+          Get Started now
+          <img src='/assets/icons/right-arrow.svg' alt='Arrow' class='w-3 inline-block ml-4' />
+        </button>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</div>
+
+<style>
+  .banner {
+    background-image:
+      url('/assets/decoratives/bgcta1.svg'), url('/assets/decoratives/bgcta2.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position:
+      left center,
+      350px center;
+    background-size: clamp(auto, 15vw, 200px) auto;
+  }
+  .banner-cta {
+    background-image: url('/assets/decoratives/CTAFrame.png');
+    background-repeat: no-repeat;
+    background-position: calc(10%) center;
+    background-size: clamp(auto, 15vw, 200px) auto;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Vista mobile (puedes ajustar el ancho según lo necesites) */
+  @media (max-width: 768px) {
+    .banner-cta {
+      background-position: right bottom;
+      background-size: clamp(60px, 50vw, 180px) auto;
+    }
+  }
+
+  hr {
+    border: none;
+    margin: 40px 0; /* Spacing around the line */
+    border: 1px solid #02434933;
+  }
+</style>
+
+<script>
+  // Export functions to global window object
+  (window as any).CaseStudyDetail = {
+    open: function () {
+      const overlay = document.getElementById('caseStudyOverlay');
+      const header = document.querySelector('header') || document.querySelector('nav');
+
+      if (overlay) {
+        document.body.style.overflow = 'hidden';
+        overlay.classList.remove('translate-x-full');
+        overlay.classList.add('translate-x-0');
+      }
+
+      // Make header fixed for case study page
+      if (header) {
+        header.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'z-50');
+        header.style.position = 'fixed';
+      }
+    },
+
+    close: function () {
+      const overlay = document.getElementById('caseStudyOverlay');
+      const header = document.querySelector('header') || document.querySelector('nav');
+
+      if (overlay) {
+        document.body.style.overflow = 'auto';
+        overlay.classList.remove('translate-x-0');
+        overlay.classList.add('translate-x-full');
+      }
+
+      // Restore header to normal position
+      if (header) {
+        header.classList.remove('fixed', 'top-0', 'left-0', 'right-0', 'z-50');
+        header.style.position = '';
+      }
+    },
+  };
+
+  // Initialize functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const backButton = document.getElementById('backButton');
+    if (backButton) {
+      backButton.addEventListener('click', (window as any).CaseStudyDetail.close);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        (window as any).CaseStudyDetail.close();
+      }
+    });
+  });
+</script>
